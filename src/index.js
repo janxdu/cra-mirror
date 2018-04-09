@@ -8,7 +8,7 @@ mirror.defaults({
 });
 
 render(
-  <Router basename="/test" hashType="hashbang">
+  <Router basename="/">
     <App />
   </Router>
   , document.getElementById('root'),
