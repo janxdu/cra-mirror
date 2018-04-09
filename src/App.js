@@ -1,7 +1,7 @@
 import { Breadcrumb, Icon, Layout, Menu } from 'antd';
 import { Route } from 'mirrorx';
 import React from 'react';
-import Home from './pages/Home';
+import Components from './pages/Components';
 
 export default class App extends React.Component {
 
@@ -66,7 +66,7 @@ export default class App extends React.Component {
               <Breadcrumb.Item>App</Breadcrumb.Item>
             </Breadcrumb>
             <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={Components} />
             </Content>
           </Layout>
         </Layout>
