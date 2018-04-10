@@ -1,4 +1,4 @@
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Form, Input } from 'antd';
 import { actions } from 'mirrorx';
 import React from 'react';
 
@@ -73,12 +73,6 @@ export default class UserLoginForm extends React.Component {
         <Form.Item
           {...tailFormItemLayout}
         >
-          {getFieldDecorator('remember', {
-            valuePropName: 'checked',
-            initialValue: true,
-          })(
-            <Checkbox>记住我</Checkbox>
-          )}
           <Button type="primary" htmlType="submit" className="login-form-button">
             登录
           </Button>
