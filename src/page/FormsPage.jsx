@@ -1,6 +1,7 @@
 import { Col, Form, Row } from 'antd';
 import React from 'react';
 import UserLoginForm from '../form/UserLoginForm';
+import KxUserLoginForm from '../form/KxUserLoginForm';
 
 export default class FormsPage extends React.Component {
 
@@ -10,6 +11,7 @@ export default class FormsPage extends React.Component {
 
   render() {
     const WrappedUserLoginForm = Form.create()(UserLoginForm);
+    const WrappedKxUserLoginForm = Form.create()(KxUserLoginForm);
     const { userLoginErrorCode, userLoginErrorMsg, userInfo } = this.props;
     return (
       <div>
@@ -27,6 +29,11 @@ export default class FormsPage extends React.Component {
         <Row gutter={16}>
           <Col className="gutter-row" span={6}>
             <WrappedUserLoginForm />
+          </Col>
+        </Row>
+        <Row gutter={16}>
+          <Col className="gutter-row" span={6}>
+            <WrappedKxUserLoginForm />
           </Col>
         </Row>
       </div>
