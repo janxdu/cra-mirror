@@ -1,4 +1,5 @@
 import createAxios from '../util/axiosUtil';
+import { createAPIError } from '../util/errorUtil';
 
 async function login(data) {
   let axios = createAxios();
@@ -9,6 +10,7 @@ async function login(data) {
     });
   } catch (error) {
     console.error(error);
+    return createAPIError();
   }
 }
 

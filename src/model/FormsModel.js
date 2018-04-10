@@ -5,6 +5,9 @@ import FormsPage from '../page/FormsPage';
 
 mirror.model({
   name: 'forms',
+  initialState: {
+    userLoginStatus: 'success'
+  },
   effects: {
     async login(data) {
       const response = await login(data);
@@ -13,4 +16,4 @@ mirror.model({
   },
 });
 
-export default connect(({ forms }) => ({ forms }))(FormsPage);
+export default connect(state => {return state.forms;})(FormsPage);

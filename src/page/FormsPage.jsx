@@ -13,6 +13,11 @@ export default class FormsPage extends React.Component {
     return (
       <div>
         <Row gutter={16}>
+          <Col className="gutter-row" span={24}>
+            登录状态：{this.props.userLoginStatus}
+          </Col>
+        </Row>
+        <Row gutter={16}>
           <Col className="gutter-row" span={4}>
             <WrappedUserLoginForm />
           </Col>
