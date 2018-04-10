@@ -1,3 +1,3 @@
-const BASE_API_URL = '172.31.99.155:3000/mock/11';
+const BASE_API_URL = '/';
 
 export { BASE_API_URL };

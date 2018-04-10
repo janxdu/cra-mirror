@@ -8,6 +8,7 @@ mirror.model({
   initialState: {
     userLoginErrorCode: '无',
     userLoginErrorMsg: '无',
+    userInfo: {},
   },
   reducers: {
     setUserLoginError(oldState, data) {
@@ -17,12 +18,22 @@ mirror.model({
         userLoginErrorMsg: data.errorMsg,
       };
     },
+    setUserLoginSuccess(oldState, data) {
+      return {
+        ...oldState,
+        userLoginErrorCode: data.errorCode,
+        userInfo: data.result.userInfo,
+      };
+    },
   },
   effects: {
     async login(data) {
       const response = await login(data);
+      console.log('response=', response);
       if (response.errorCode !== 0) {
         actions.forms.setUserLoginError({ errorCode: response.errorCode, errorMsg: response.errorMsg });
+      } else {
+        actions.forms.setUserLoginSuccess({ errorCode: response.errorCode, result: response.result });
       }
     },
   },

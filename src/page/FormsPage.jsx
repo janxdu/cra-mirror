@@ -10,7 +10,7 @@ export default class FormsPage extends React.Component {
 
   render() {
     const WrappedUserLoginForm = Form.create()(UserLoginForm);
-    const { userLoginErrorCode, userLoginErrorMsg } = this.props;
+    const { userLoginErrorCode, userLoginErrorMsg, userInfo } = this.props;
     return (
       <div>
         <Row gutter={16}>
@@ -19,6 +19,9 @@ export default class FormsPage extends React.Component {
           </Col>
           <Col className="gutter-row" span={24}>
             错误信息：{userLoginErrorMsg}
+          </Col>
+          <Col className="gutter-row" span={24}>
+            用户名：{userInfo.username}
           </Col>
         </Row>
         <Row gutter={16}>

@@ -12,7 +12,8 @@ function createAxios() {
 async function post(url, data, config) {
   let axios = createAxios();
   try {
-    return await axios.post(url, data, config);
+    const response = await axios.post(url, data, config);
+    return response.data;
   } catch (error) {
     console.error(error);
     return createAPIError();
