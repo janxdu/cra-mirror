@@ -1,17 +1,10 @@
-import createAxios from '../util/axiosUtil';
-import { createAPIError } from '../util/errorUtil';
+import { post } from '../util/axiosUtil';
 
 async function login(data) {
-  let axios = createAxios();
-  try {
-    return await  axios.post('/user/login', {
-      username: data.username,
-      password: data.password
-    });
-  } catch (error) {
-    console.error(error);
-    return createAPIError();
-  }
+  return post('/user/login', {
+    username: data.username,
+    password: data.password
+  });
 }
 
 export { login };
