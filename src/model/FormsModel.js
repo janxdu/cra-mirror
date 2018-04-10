@@ -10,10 +10,12 @@ mirror.model({
     userLoginErrorMsg: '无',
   },
   reducers: {
-    setUserLoginError(state, data) {
-      state.userLoginErrorCode = data.errorCode;
-      state.userLoginErrorMsg = data.errorMsg;
-      return state;
+    setUserLoginError(oldState, data) {
+      return {
+        ...oldState,
+        userLoginErrorCode: data.errorCode,
+        userLoginErrorMsg: data.errorMsg,
+      };
     },
   },
   effects: {
