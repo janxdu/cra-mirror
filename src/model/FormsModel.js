@@ -6,11 +6,13 @@ import FormsPage from '../page/FormsPage';
 mirror.model({
   name: 'forms',
   initialState: {
-    userLoginStatus: 'success'
+    userLoginErrorCode: '无',
+    userLoginErrorMsg: '无',
   },
   reducers: {
-    updateUserLoginStatus(state, loginStatus) {
-      state.userLoginStatus = loginStatus;
+    setUserLoginError(state, data) {
+      state.userLoginErrorCode = data.errorCode;
+      state.userLoginErrorMsg = data.errorMsg;
       return state;
     },
   },
@@ -18,12 +20,12 @@ mirror.model({
     async login(data) {
       const response = await login(data);
       if (response.errorCode !== 0) {
-        actions.forms.updateUserLoginStatus('failed');
+        actions.forms.setUserLoginError({ errorCode: response.errorCode, errorMsg: response.errorMsg });
       }
     },
   },
 });
 
 export default connect(state => {
-  return { userLoginStatus: state.forms.userLoginStatus };
+  return state.forms;
 })(FormsPage);

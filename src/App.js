@@ -1,8 +1,8 @@
 import { Breadcrumb, Icon, Layout, Menu } from 'antd';
 import { Route } from 'mirrorx';
 import React from 'react';
-import ComponentsPage from './page/ComponentsPage';
 import FormsModel from './model/FormsModel';
+import ComponentsPage from './page/ComponentsPage';
 
 export default class App extends React.Component {
 
