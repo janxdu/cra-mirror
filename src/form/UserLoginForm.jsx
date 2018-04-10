@@ -1,9 +1,19 @@
 import { Button, Checkbox, Form, Input } from 'antd';
+import { actions } from 'mirrorx';
 import React from 'react';
 
 export default class UserLoginForm extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        actions.forms.login(values);
+      }
+    });
   }
 
   render() {
@@ -33,7 +43,7 @@ export default class UserLoginForm extends React.Component {
       },
     };
     return (
-      <Form>
+      <Form onSubmit={this.onSubmit.bind(this)}>
         <Form.Item
           {...formItemLayout}
           label="用户名"

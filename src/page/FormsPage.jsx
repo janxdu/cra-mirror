@@ -1,6 +1,6 @@
 import { Col, Form, Row } from 'antd';
 import React from 'react';
-import UserLoginForm from '../forms/UserLoginForm';
+import UserLoginForm from '../form/UserLoginForm';
 
 export default class FormsPage extends React.Component {
 

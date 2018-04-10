@@ -1,8 +1,8 @@
 import { Breadcrumb, Icon, Layout, Menu } from 'antd';
 import { Route } from 'mirrorx';
 import React from 'react';
-import ComponentsPage from './pages/ComponentsPage';
-import FormsPage from './pages/FormsPage';
+import ComponentsPage from './page/ComponentsPage';
+import FormsModel from './model/FormsModel';
 
 export default class App extends React.Component {
 
@@ -68,7 +68,7 @@ export default class App extends React.Component {
             </Breadcrumb>
             <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
               <Route exact path="/" component={ComponentsPage} />
-              <Route exact path="/forms" component={FormsPage} />
+              <Route exact path="/forms" component={FormsModel} />
             </Content>
           </Layout>
         </Layout>
