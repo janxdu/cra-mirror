@@ -4,7 +4,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 mirror.defaults({
-  historyMode: 'hash',
+  historyMode: 'browser',
 });
 
 render(
