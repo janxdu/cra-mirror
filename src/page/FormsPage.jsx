@@ -9,6 +9,10 @@ export default class FormsPage extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    console.log("FormsPage componentDidMount");
+  }
+
   render() {
     const WrappedUserLoginForm = Form.create()(UserLoginForm);
     const WrappedKxUserLoginForm = Form.create()(KxUserLoginForm);

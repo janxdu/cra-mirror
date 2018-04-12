@@ -1,6 +1,6 @@
-import mirror, { actions, connect } from 'mirrorx';
 import React from 'react';
 import { login } from '../api/userLogin';
+import mirror, { actions, connect } from '../components/kx-mirrorx';
 import FormsPage from '../page/FormsPage';
 
 mirror.model({

@@ -10,8 +10,6 @@
     "crypto-js": "^3.1.9-1",
     "immutable": "^3.8.2",
     "lodash": "4.17.5",
-    "mirror-saga": "^0.1.0",
-    "mirrorx": "^0.2.10",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-router": "^4.2.0",
@@ -21,7 +19,9 @@
     "redux": "^3.7.2",
     "redux-immutable": "4.0.0",
     "redux-saga": "^0.16.0",
-    "kx-components": "file:/Users/sailing/Development/reactjs_workspace/sailingcai/cra-kx-components/build"
+    "history": "^4.7.2",
+    "react-redux": "^5.0.6",
+    "kx-components": "file:D:\\Development\\reactjs_workspace\\sailingcai\\cra-kx-components\\build"
   },
   "scripts": {
     "start": "react-app-rewired start",

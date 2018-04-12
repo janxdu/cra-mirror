@@ -1,7 +1,7 @@
 import { Breadcrumb, Icon, Layout, Menu } from 'antd';
 import 'kx-components/index.css';
-import { Route } from 'mirrorx';
 import React from 'react';
+import { Route } from './components/kx-mirrorx';
 import FormsModel from './model/FormsModel';
 import ComponentsPage from './page/ComponentsPage';
 
@@ -11,10 +11,14 @@ export default class App extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    console.log('app componentDidMount');
+  }
+
   render() {
     const { SubMenu } = Menu;
     const { Header, Content, Sider } = Layout;
-
+    console.log('render');
     return (
       <Layout>
         <Header className="header">
@@ -74,7 +78,6 @@ export default class App extends React.Component {
           </Layout>
         </Layout>
       </Layout>
-
     );
   }
 }

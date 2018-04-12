@@ -1,6 +1,6 @@
-import mirror, { render, Router } from 'mirrorx';
 import React from 'react';
 import App from './App';
+import mirror, { render, Router } from './components/kx-mirrorx';
 import registerServiceWorker from './registerServiceWorker';
 
 mirror.defaults({
@@ -13,4 +13,6 @@ render(
   </Router>
   , document.getElementById('root'),
 );
+
+
 registerServiceWorker();

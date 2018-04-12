@@ -1,6 +1,6 @@
 import { Button, Form, Input } from 'antd';
-import { actions } from 'mirrorx';
 import React from 'react';
+import { actions } from '../components/kx-mirrorx';
 
 export default class UserLoginForm extends React.Component {
   constructor(props) {
