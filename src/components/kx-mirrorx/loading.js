@@ -8,13 +8,11 @@ export default function loading(options = {}) {
       global: show,
       models: Object.assign({}, state.models, { [namespace]: show }),
     });
-    if (options.effects) {
-      next.effects = Object.assign({}, state.effects, {
-        [namespace]: Object.assign({}, state.effects[namespace], {
-          [action]: show
-        })
-      });
-    }
+    next.effects = Object.assign({}, state.effects, {
+      [namespace]: Object.assign({}, state.effects[namespace], {
+        [action]: show
+      })
+    });
     return next;
   };
 
