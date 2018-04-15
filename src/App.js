@@ -11,14 +11,9 @@ export default class App extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    console.log('app componentDidMount');
-  }
-
   render() {
     const { SubMenu } = Menu;
     const { Header, Content, Sider } = Layout;
-    console.log('render');
     return (
       <Layout>
         <Header className="header">

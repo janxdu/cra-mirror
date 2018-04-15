@@ -1,16 +1,12 @@
 import { Col, Form, Row } from 'antd';
 import React from 'react';
-import UserLoginForm from '../form/UserLoginForm';
 import KxUserLoginForm from '../form/KxUserLoginForm';
+import UserLoginForm from '../form/UserLoginForm';
 
 export default class FormsPage extends React.Component {
 
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount() {
-    console.log("FormsPage componentDidMount");
   }
 
   render() {

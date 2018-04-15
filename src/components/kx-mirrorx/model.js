@@ -13,6 +13,11 @@ export default function model(m) {
     reducer
   };
 
+  // 非常脏的做法，为了后面能获取到initialState
+  if (m.name === 'loading') {
+    _model.initialState = m.initialState;
+  }
+
   models.push(_model);
 
   addActions(m.name, m.reducers, m.effects);
