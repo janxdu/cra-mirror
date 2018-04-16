@@ -1,7 +1,7 @@
 import { Breadcrumb, Icon, Layout, Menu } from 'antd';
 import 'kx-components/index.css';
 import React from 'react';
-import { Route } from './components/kx-mirrorx';
+import { Route } from './framework/kx-mirrorx';
 import FormsModel from './model/FormsModel';
 import ComponentsPage from './page/ComponentsPage';
 

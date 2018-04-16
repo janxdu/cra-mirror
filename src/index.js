@@ -1,6 +1,6 @@
 import React from 'react';
 import App from './App';
-import mirror, { render, Router } from './components/kx-mirrorx';
+import mirror, { render, Router } from './framework/kx-mirrorx';
 import registerServiceWorker from './registerServiceWorker';
 
 mirror.defaults({

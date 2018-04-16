@@ -1,4 +1,4 @@
-import { Col, Form, Row } from 'antd';
+import { Col, Form, Row, Spin } from 'antd';
 import React from 'react';
 import KxUserLoginForm from '../form/KxUserLoginForm';
 import UserLoginForm from '../form/UserLoginForm';
@@ -12,7 +12,8 @@ export default class FormsPage extends React.Component {
   render() {
     const WrappedUserLoginForm = Form.create()(UserLoginForm);
     const WrappedKxUserLoginForm = Form.create()(KxUserLoginForm);
-    const { userLoginErrorCode, userLoginErrorMsg, userInfo } = this.props;
+    const { userLoginErrorCode, userLoginErrorMsg, userInfo, loginSpin } = this.props;
+    console.log(loginSpin);
     return (
       <div>
         <Row gutter={16}>
@@ -28,7 +29,9 @@ export default class FormsPage extends React.Component {
         </Row>
         <Row gutter={16}>
           <Col className="gutter-row" span={6}>
-            <WrappedUserLoginForm />
+            <Spin spinning={loginSpin === true}>
+              <WrappedUserLoginForm />
+            </Spin>
           </Col>
         </Row>
         <Row gutter={16}>

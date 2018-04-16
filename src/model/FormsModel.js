@@ -1,6 +1,6 @@
 import React from 'react';
 import { login } from '../api/userLogin';
-import mirror, { actions, connect } from '../components/kx-mirrorx';
+import mirror, { actions, connect } from '../framework/kx-mirrorx';
 import FormsPage from '../page/FormsPage';
 
 mirror.model({
@@ -40,5 +40,10 @@ mirror.model({
 });
 
 export default connect(state => {
-  return state.forms;
+  return {
+    userInfo: state.forms.userInfo,
+    userLoginErrorCode: state.forms.userLoginErrorCode,
+    userLoginErrorMsg: state.forms.userLoginErrorMsg,
+    loginSpin: state.loading.effects.forms.login,
+  };
 })(FormsPage);
