@@ -5,21 +5,30 @@ import mirror, { connect } from '../framework/kx-mirrorx';
 mirror.model({
   name: 'app',
   initialState: {
-    selectMenu: 'component',
-    selectSubMenu: 'component-common',
-    selectSubMenuItem: 'component-common-login',
+    selectedMenu: 'component',
+    selectedSubMenu: 'component-common',
+    selectedSubMenuItem: 'component-common-login',
   },
   reducers: {
     selectMenu(oldState, data) {
       return {
         ...oldState,
-        userLoginErrorCode: data.errorCode,
-        userLoginErrorMsg: data.errorMsg,
+        selectedMenu: data,
       };
     },
 
     selectSubMenu(oldState, data) {
+      return {
+        ...oldState,
+        selectedSubMenu: data,
+      };
+    },
 
+    selectSubMenuItem(oldState, data) {
+      return {
+        ...oldState,
+        selectedSubMenuItem: data,
+      };
     }
   },
 });
