@@ -6,8 +6,8 @@ mirror.model({
   name: 'app',
   initialState: {
     selectedMenu: 'component',
-    selectedSubMenu: 'component-common',
-    selectedSubMenuItem: 'component-common-login',
+    selectedSubMenu: '',
+    selectedSubMenuItem: '',
   },
   reducers: {
     selectMenu(oldState, data) {

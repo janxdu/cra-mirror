@@ -17,7 +17,7 @@ export default class App extends React.Component {
 
   render() {
     const { SubMenu } = Menu;
-    const { Header, Content, Sider } = Layout;
+    const { Header, Content, Sider, Footer } = Layout;
 
     const { selectedMenu, selectedSubMenu, selectedSubMenuItem } = this.props;
 
@@ -43,8 +43,15 @@ export default class App extends React.Component {
           <Sider width={200} style={{ background: '#fff' }}>
             <Menu
               mode="inline"
-              defaultOpenKeys={[selectedSubMenu]}
-              defaultSelectedKeys={[selectedSubMenuItem]}
+              defaultOpenKeys={[
+                'component-common',
+                'commonLayout-page',
+                'commonLayout-component',
+                'dataRequest-ajax',
+                'dataRequest-file',
+                'loading-spin',
+                'forms-validation',
+                'forms-layout']}
               style={{ height: '100%', borderRight: 0 }}
             >
               {selectedMenu === 'component' &&
@@ -97,8 +104,7 @@ export default class App extends React.Component {
               }
             </Menu>
           </Sider>
-
-          <Layout style={{ padding: '0 24px 24px' }}>
+          <Layout style={{ padding: '0 24px 0 24px' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
               <Breadcrumb.Item>Home</Breadcrumb.Item>
               <Breadcrumb.Item>List</Breadcrumb.Item>
@@ -110,6 +116,9 @@ export default class App extends React.Component {
             </Content>
           </Layout>
         </Layout>
+        <Footer style={{ textAlign: 'center' }}>
+          开鑫金服 ©2018
+        </Footer>
       </Layout>
     );
   }
