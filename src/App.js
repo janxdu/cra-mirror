@@ -1,4 +1,4 @@
-import { Breadcrumb, Icon, Layout, Menu } from 'antd';
+import { Breadcrumb, Layout, Menu } from 'antd';
 import 'kx-components/index.css';
 import React from 'react';
 import { Route } from './framework/kx-mirrorx';
@@ -14,6 +14,9 @@ export default class App extends React.Component {
   render() {
     const { SubMenu } = Menu;
     const { Header, Content, Sider } = Layout;
+
+    const { selectMenu, selectSubMenu, selectSubMenuItem } = this.props;
+
     return (
       <Layout>
         <Header className="header">
@@ -21,7 +24,7 @@ export default class App extends React.Component {
           <Menu
             theme="dark"
             mode="horizontal"
-            defaultSelectedKeys={['component']}
+            defaultSelectedKeys={[selectMenu]}
             style={{ lineHeight: '64px' }}
           >
             <Menu.Item key="component">组件</Menu.Item>
@@ -29,37 +32,50 @@ export default class App extends React.Component {
             <Menu.Item key="dataRequest">数据请求</Menu.Item>
             <Menu.Item key="loading">预载/切换</Menu.Item>
             <Menu.Item key="forms">表单</Menu.Item>
-            <Menu.Item key="router">路由</Menu.Item>
           </Menu>
         </Header>
         <Layout>
           <Sider width={200} style={{ background: '#fff' }}>
             <Menu
               mode="inline"
-              defaultSelectedKeys={['1']}
-              defaultOpenKeys={['sub1']}
+              defaultOpenKeys={[selectSubMenu]}
+              defaultSelectedKeys={[selectSubMenuItem]}
               style={{ height: '100%', borderRight: 0 }}
             >
-              <SubMenu key="sub1" title={<span><Icon type="user" />subnav 1</span>}>
-                <Menu.Item key="1">option1</Menu.Item>
-                <Menu.Item key="2">option2</Menu.Item>
-                <Menu.Item key="3">option3</Menu.Item>
-                <Menu.Item key="4">option4</Menu.Item>
+              <SubMenu key="component-common" title={<span>通用</span>}>
+                <Menu.Item key="component-common-login">登录框</Menu.Item>
+                <Menu.Item key="component-common-iconLabel">带提示的图标</Menu.Item>
+                <Menu.Item key="component-common-money">货币显示</Menu.Item>
               </SubMenu>
-              <SubMenu key="sub2" title={<span><Icon type="laptop" />subnav 2</span>}>
-                <Menu.Item key="5">option5</Menu.Item>
-                <Menu.Item key="6">option6</Menu.Item>
-                <Menu.Item key="7">option7</Menu.Item>
-                <Menu.Item key="8">option8</Menu.Item>
+              <SubMenu key="commonLayout-page" title={<span>页面</span>}>
+                <Menu.Item key="commonLayout-page-headerFooter">Header+Footer</Menu.Item>
+                <Menu.Item key="commonLayout-page-sidebar">左侧边栏</Menu.Item>
               </SubMenu>
-              <SubMenu key="sub3" title={<span><Icon type="notification" />subnav 3</span>}>
-                <Menu.Item key="9">option9</Menu.Item>
-                <Menu.Item key="10">option10</Menu.Item>
-                <Menu.Item key="11">option11</Menu.Item>
-                <Menu.Item key="12">option12</Menu.Item>
+              <SubMenu key="commonLayout-component" title={<span>组件</span>}>
+                <Menu.Item key="commonLayout-component-item">项目条目</Menu.Item>
+                <Menu.Item key="commonLayout-component-detail">项目详情</Menu.Item>
+              </SubMenu>
+              <SubMenu key="dataRequest-ajax" title={<span>AJAX请求</span>}>
+                <Menu.Item key="dataRequest-ajax-get">Get</Menu.Item>
+                <Menu.Item key="dataRequest-ajax-post">Post</Menu.Item>
+              </SubMenu>
+              <SubMenu key="dataRequest-file" title={<span>文件</span>}>
+                <Menu.Item key="dataRequest-file-upload">上传</Menu.Item>
+              </SubMenu>
+              <SubMenu key="loading-spin" title={<span>转转转</span>}>
+                <Menu.Item key="loading-spin-page">页面</Menu.Item>
+                <Menu.Item key="loading-spin-fragment">内部块</Menu.Item>
+              </SubMenu>
+              <SubMenu key="forms-validation" title={<span>校验</span>}>
+                <Menu.Item key="forms-validation-general">普通校验</Menu.Item>
+                <Menu.Item key="forms-validation-ajax">AJAX校验</Menu.Item>
+              </SubMenu>
+              <SubMenu key="forms-layout" title={<span>表单布局</span>}>
+                <Menu.Item key="forms-layout-labelValue">Label/Value</Menu.Item>
               </SubMenu>
             </Menu>
           </Sider>
+
           <Layout style={{ padding: '0 24px 24px' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
               <Breadcrumb.Item>Home</Breadcrumb.Item>

@@ -1,5 +1,5 @@
 import React from 'react';
-import App from './App';
+import AppModel from './model/AppModel';
 import mirror, { render, Router } from './framework/kx-mirrorx';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -9,7 +9,7 @@ mirror.defaults({
 
 render(
   <Router basename="/">
-    <App />
+    <AppModel />
   </Router>
   , document.getElementById('root'),
 );
