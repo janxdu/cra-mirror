@@ -19,16 +19,28 @@ export default class App extends React.Component {
   }
 
   selectMenuItem({ item, key, keyPath }) {
-    console.log('item=', item);
-    console.log('key=', key);
-    console.log('keyPath=', keyPath);
+    actions.routing.push(this.getSelectedPath(key));
+  }
+
+  getSelectedKey(location) {
+    let pathname = location.pathname;
+    let temp = pathname.substring(1);
+    temp = temp.replace(new RegExp('/', 'g'), '-');
+
+    return temp;
+  }
+
+  getSelectedPath(pathname) {
+    let temp = pathname.replace(new RegExp('-', 'g'), '/');
+    return '/' + temp;
   }
 
   render() {
     const { SubMenu } = Menu;
     const { Header, Content, Sider, Footer } = Layout;
 
-    const { selectedMenu, selectedSubMenu, selectedSubMenuItem } = this.props;
+    const { selectedMenu, location } = this.props;
+    let selectedKey = this.getSelectedKey(location);
 
     return (
       <Layout>
@@ -63,6 +75,7 @@ export default class App extends React.Component {
                 'forms-layout']}
               style={{ height: '100%', borderRight: 0 }}
               onClick={this.selectMenuItem.bind(this)}
+              selectedKeys={[selectedKey]}
             >
               {selectedMenu === 'component' &&
               <SubMenu key="component-common" title={<span>通用</span>}>
@@ -122,9 +135,9 @@ export default class App extends React.Component {
             </Breadcrumb>
             <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
               <Route exact path="/" component={IntroductionPage} />
-              <Route path="/component/login" component={LoginPage} />
-              <Route path="/component/money" component={MoneyPage} />
-              <Route path="/component/iconLabel" component={IconLabelPage} />
+              <Route path="/component/common/login" component={LoginPage} />
+              <Route path="/component/common/money" component={MoneyPage} />
+              <Route path="/component/common/iconLabel" component={IconLabelPage} />
               <Route exact path="/forms" component={FormsModel} />
             </Content>
           </Layout>

@@ -1,6 +1,7 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 import App from '../App';
-import mirror, { connect } from '../framework/kx-mirrorx';
+import mirror, { actions, connect } from '../framework/kx-mirrorx';
 
 mirror.model({
   name: 'app',
@@ -17,22 +18,12 @@ mirror.model({
       };
     },
 
-    selectSubMenu(oldState, data) {
-      return {
-        ...oldState,
-        selectedSubMenu: data,
-      };
-    },
+    selectMenuItem(oldState, data) {
 
-    selectSubMenuItem(oldState, data) {
-      return {
-        ...oldState,
-        selectedSubMenuItem: data,
-      };
     }
   },
 });
 
-export default connect(state => {
+export default withRouter(connect(state => {
   return state.app;
-})(App);
+})(App));
