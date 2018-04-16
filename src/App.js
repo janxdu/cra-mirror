@@ -3,7 +3,10 @@ import 'kx-components/index.css';
 import React from 'react';
 import { actions, Route } from './framework/kx-mirrorx';
 import FormsModel from './model/FormsModel';
-import ComponentsPage from './page/ComponentsPage';
+import IconLabelPage from './page/component/IconLabelPage';
+import LoginPage from './page/component/LoginPage';
+import MoneyPage from './page/component/MoneyPage';
+import IntroductionPage from './page/IntroductionPage';
 
 export default class App extends React.Component {
 
@@ -13,6 +16,12 @@ export default class App extends React.Component {
 
   selectMenu({ item, key, keyPath }) {
     actions.app.selectMenu(key);
+  }
+
+  selectMenuItem({ item, key, keyPath }) {
+    console.log('item=', item);
+    console.log('key=', key);
+    console.log('keyPath=', keyPath);
   }
 
   render() {
@@ -53,6 +62,7 @@ export default class App extends React.Component {
                 'forms-validation',
                 'forms-layout']}
               style={{ height: '100%', borderRight: 0 }}
+              onClick={this.selectMenuItem.bind(this)}
             >
               {selectedMenu === 'component' &&
               <SubMenu key="component-common" title={<span>通用</span>}>
@@ -111,7 +121,10 @@ export default class App extends React.Component {
               <Breadcrumb.Item>App</Breadcrumb.Item>
             </Breadcrumb>
             <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
-              <Route exact path="/" component={ComponentsPage} />
+              <Route exact path="/" component={IntroductionPage} />
+              <Route path="/component/login" component={LoginPage} />
+              <Route path="/component/money" component={MoneyPage} />
+              <Route path="/component/iconLabel" component={IconLabelPage} />
               <Route exact path="/forms" component={FormsModel} />
             </Content>
           </Layout>
