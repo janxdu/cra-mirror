@@ -3,6 +3,7 @@ import { applyMiddleware, combineReducers, compose, createStore as _createStore 
 
 import createMiddleware from './middleware';
 import routerMiddleware from './routerMiddleware';
+import sagaMiddleware from './sagaMiddleware';
 
 export let store;
 
@@ -10,6 +11,7 @@ export function createStore(models, reducers, initialState, middlewares = []) {
 
   const middleware = applyMiddleware(
     routerMiddleware(),
+    sagaMiddleware,
     ...middlewares,
     createMiddleware()
   );
