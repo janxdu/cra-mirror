@@ -3,10 +3,7 @@ import loading from './loading';
 // Registry of namespaced effects
 import { models } from './model';
 import sagaMiddleware from './sagaMiddleware';
-
-const isGenerator = (fn) => (
-  fn && fn.constructor && fn.constructor.name === 'GeneratorFunction'
-);
+import { isGenerator } from './util';
 
 let loadingModel = null;
 
@@ -40,6 +37,8 @@ export const addEffect = effects => (name, handler) => {
           actions.loading.hide({ namespace, action });
         });
       };
+    }else{
+      effects[name] = handler;
     }
   } else {
     effects[name] = async function (props) {

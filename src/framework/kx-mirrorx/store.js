@@ -1,9 +1,13 @@
 import { routerReducer } from 'react-router-redux';
 import { applyMiddleware, combineReducers, compose, createStore as _createStore } from 'redux';
+import { all, fork } from 'redux-saga/effects';
+import { actions } from './actions';
+import { effects } from './effects';
 
 import createMiddleware from './middleware';
 import routerMiddleware from './routerMiddleware';
 import sagaMiddleware from './sagaMiddleware';
+import { isGenerator } from './util';
 
 export let store;
 
@@ -33,6 +37,23 @@ export function createStore(models, reducers, initialState, middlewares = []) {
   const enhancer = composeEnhancers(...enhancers);
 
   store = _createStore(reducer, initialState, enhancer);
+
+  const rootSagas = [];
+  Object.keys(actions).forEach(namespace => {
+    const modelActions = actions[namespace];
+    Object.keys(modelActions).forEach(action => {
+      if (actions[namespace][action].isEffect) {
+        const handler = effects[namespace + '/' + action];
+        if (isGenerator(handler)) {
+          rootSagas.push(fork(handler));
+        }
+      }
+    });
+  });
+
+  sagaMiddleware.run(function* () {
+    return yield all(rootSagas);
+  });
 
   return store;
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router';
+import { take } from 'redux-saga/effects';
 import App from '../App';
-import mirror, { actions, connect } from '../framework/kx-mirrorx';
+import mirror, { connect } from '../framework/kx-mirrorx';
 
 mirror.model({
   name: 'app',
@@ -17,6 +18,15 @@ mirror.model({
         selectedMenu: data,
       };
     },
+  },
+  effects: {
+    * rootSaga() {
+      while (true) {
+        const takeData = yield take('forms/login');
+        console.log('hello forms/login take end from app');
+        console.log('takeData=', takeData);
+      }
+    }
   },
 });
 

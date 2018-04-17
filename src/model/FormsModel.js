@@ -1,5 +1,5 @@
 import React from 'react';
-import { call } from 'redux-saga/effects';
+import { call, take } from 'redux-saga/effects';
 import { login as loginApi } from '../api/userLogin';
 import mirror, { actions, connect } from '../framework/kx-mirrorx';
 import FormsPage from '../page/FormsPage';
@@ -47,6 +47,13 @@ mirror.model({
         actions.forms.setUserLoginSuccess({ errorCode: response.errorCode, result: response.result });
       }
     },
+
+    * rootSaga() {
+      while (true) {
+        yield take('forms/login');
+        console.log('hello forms/login take end from forms');
+      }
+    }
   },
 });
 
