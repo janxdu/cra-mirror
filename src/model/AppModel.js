@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router';
-import { take } from 'redux-saga/effects';
+import { takeEvery } from 'redux-saga/effects';
 import App from '../App';
 import mirror, { connect } from '../framework/kx-mirrorx';
 
@@ -21,11 +21,10 @@ mirror.model({
   },
   effects: {
     * rootSaga() {
-      while (true) {
-        const takeData = yield take('forms/login');
+      yield takeEvery('forms/login', function (action) {
         console.log('hello forms/login take end from app');
-        console.log('takeData=', takeData);
-      }
+        console.log('action=', action);
+      });
     }
   },
 });
