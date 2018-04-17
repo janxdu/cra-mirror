@@ -17,10 +17,6 @@ mirror.model({
         selectedMenu: data,
       };
     },
-
-    selectMenuItem(oldState, data) {
-
-    }
   },
 });
 

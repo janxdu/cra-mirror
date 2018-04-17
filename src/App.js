@@ -68,7 +68,8 @@ export default class App extends React.Component {
                 'component-common',
                 'commonLayout-page',
                 'commonLayout-component',
-                'dataRequest-ajax',
+                'dataRequest-effect',
+                'dataRequest-saga',
                 'dataRequest-file',
                 'loading-spin',
                 'forms-validation',
@@ -98,9 +99,14 @@ export default class App extends React.Component {
               </SubMenu>
               }
               {selectedMenu === 'dataRequest' &&
-              <SubMenu key="dataRequest-ajax" title={<span>AJAX请求</span>}>
-                <Menu.Item key="dataRequest-ajax-get">Get</Menu.Item>
-                <Menu.Item key="dataRequest-ajax-post">Post</Menu.Item>
+              <SubMenu key="dataRequest-effect" title={<span>Mirror Effect</span>}>
+                <Menu.Item key="dataRequest-effect-get">Get</Menu.Item>
+                <Menu.Item key="dataRequest-effect-post">Post</Menu.Item>
+              </SubMenu>
+              }
+              {selectedMenu === 'dataRequest' &&
+              <SubMenu key="dataRequest-saga" title={<span>Mirror Saga</span>}>
+                <Menu.Item key="dataRequest-saga-latest">Latest</Menu.Item>
               </SubMenu>
               }
               {selectedMenu === 'dataRequest' &&
