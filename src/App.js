@@ -106,11 +106,14 @@ export default class App extends React.Component {
 
 
           <Layout style={{ padding: '0 24px 0 24px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
+            {selectedKey ? <Breadcrumb style={{ margin: '16px 0' }}>
               <Breadcrumb.Item>组件</Breadcrumb.Item>
               <Breadcrumb.Item>通用</Breadcrumb.Item>
               <Breadcrumb.Item>登录框</Breadcrumb.Item>
-            </Breadcrumb>
+            </Breadcrumb> : <Breadcrumb style={{ margin: '16px 0' }}>
+              <Breadcrumb.Item>介绍</Breadcrumb.Item>
+            </Breadcrumb>}
+
             <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
               <Route exact path="/" component={IntroductionPage} />
               <Route path="/component/common/login" component={LoginPage} />
