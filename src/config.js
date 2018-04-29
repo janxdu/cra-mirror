@@ -88,7 +88,8 @@ const MENU_DATA = [
           },
           {
             name: 'Post',
-            path: '/post'
+            path: '/post',
+            key: 'dataRequest-ajax-post',
           }
         ]
       },

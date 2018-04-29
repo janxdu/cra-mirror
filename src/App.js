@@ -45,18 +45,24 @@ export default class App extends React.Component {
 
     let topMenus = [];
     let defaultOpenKeys = [];
+    let keyNameCache = {};
     MENU_DATA.forEach(function (topMenu) {
+      keyNameCache[topMenu.key] = topMenu.name;
       topMenus.push(<Menu.Item key={topMenu.key}>{topMenu.name}</Menu.Item>);
       if (topMenu.subMenus) {
         topMenu.subMenus.forEach(function (subMenu) {
+          keyNameCache[subMenu.key] = subMenu.name;
           defaultOpenKeys.push(subMenu.key);
+          subMenu.menuItems.forEach(function (menuItem) {
+            keyNameCache[menuItem.key] = menuItem.name;
+          });
         });
       }
     });
 
     let subMenus = [];
     // 根据 selectedMenu 生成菜单
-    MENU_DATA.find(function (topMenu) {
+    MENU_DATA.forEach(function (topMenu) {
       if (topMenu.key === selectedMenu) {
         if (topMenu.subMenus) {
           topMenu.subMenus.forEach(function (subMenu) {
@@ -74,6 +80,25 @@ export default class App extends React.Component {
           });
         }
       }
+    });
+
+    let breadcrumbKeys = [];
+    if (selectedKey) {
+      // 对selectedKey进行拆解
+      let tempArray = selectedKey.split('-');
+      // 进行连接
+      for (let i = 0; i < tempArray.length; i++) {
+        let array = [];
+        for (let j = 0; j < i + 1; j++) {
+          array.push(tempArray[j]);
+        }
+        breadcrumbKeys.push(array.join('-'));
+      }
+    }
+
+    let breadcrumbItems = [];
+    breadcrumbKeys.forEach(function (key) {
+      breadcrumbItems.push(<Breadcrumb.Item>{keyNameCache[key]}</Breadcrumb.Item>);
     });
 
     return (
@@ -107,9 +132,7 @@ export default class App extends React.Component {
 
           <Layout style={{ padding: '0 24px 0 24px' }}>
             {selectedKey ? <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>组件</Breadcrumb.Item>
-              <Breadcrumb.Item>通用</Breadcrumb.Item>
-              <Breadcrumb.Item>登录框</Breadcrumb.Item>
+              {breadcrumbItems}
             </Breadcrumb> : <Breadcrumb style={{ margin: '16px 0' }}>
               <Breadcrumb.Item>介绍</Breadcrumb.Item>
             </Breadcrumb>}
