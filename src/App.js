@@ -45,7 +45,6 @@ export default class App extends React.Component {
 
     let topMenus = [];
     let defaultOpenKeys = [];
-
     MENU_DATA.forEach(function (topMenu) {
       topMenus.push(<Menu.Item key={topMenu.key}>{topMenu.name}</Menu.Item>);
       if (topMenu.subMenus) {
@@ -55,8 +54,27 @@ export default class App extends React.Component {
       }
     });
 
+    let subMenus = [];
     // 根据 selectedMenu 生成菜单
-
+    MENU_DATA.find(function (topMenu) {
+      if (topMenu.key === selectedMenu) {
+        if (topMenu.subMenus) {
+          topMenu.subMenus.forEach(function (subMenu) {
+            let subMenuItems = [];
+            if (subMenu.menuItems) {
+              subMenu.menuItems.forEach(function (menuItem) {
+                subMenuItems.push(<Menu.Item key={menuItem.key}>{menuItem.name}</Menu.Item>);
+              });
+            }
+            subMenus.push(
+              <SubMenu key={subMenu.key} title={<span>{subMenu.name}</span>}>
+                {subMenuItems}
+              </SubMenu>
+            );
+          });
+        }
+      }
+    });
 
     return (
       <Layout>
@@ -82,54 +100,7 @@ export default class App extends React.Component {
               onClick={this.selectMenuItem.bind(this)}
               selectedKeys={[selectedKey]}
             >
-              {selectedMenu === 'component' &&
-              <SubMenu key="component-common" title={<span>通用</span>}>
-                <Menu.Item key="component-common-login">登录框</Menu.Item>
-                <Menu.Item key="component-common-iconLabel">带提示的图标</Menu.Item>
-                <Menu.Item key="component-common-money">货币显示</Menu.Item>
-              </SubMenu>
-              }
-
-              {selectedMenu === 'commonLayout' &&
-              <SubMenu key="commonLayout-page" title={<span>页面</span>}>
-                <Menu.Item key="commonLayout-page-headerFooter">Header+Footer</Menu.Item>
-                <Menu.Item key="commonLayout-page-sidebar">左侧边栏</Menu.Item>
-              </SubMenu>
-              }
-              {selectedMenu === 'commonLayout' &&
-              <SubMenu key="commonLayout-component" title={<span>组件</span>}>
-                <Menu.Item key="commonLayout-component-item">项目条目</Menu.Item>
-                <Menu.Item key="commonLayout-component-detail">项目详情</Menu.Item>
-              </SubMenu>
-              }
-              {selectedMenu === 'dataRequest' &&
-              <SubMenu key="dataRequest-ajax" title={<span>AJAX请求</span>}>
-                <Menu.Item key="dataRequest-ajax-get">Get</Menu.Item>
-                <Menu.Item key="dataRequest-ajax-post">Post</Menu.Item>
-              </SubMenu>
-              }
-              {selectedMenu === 'dataRequest' &&
-              <SubMenu key="dataRequest-file" title={<span>文件</span>}>
-                <Menu.Item key="dataRequest-file-upload">上传</Menu.Item>
-              </SubMenu>
-              }
-              {selectedMenu === 'loading' &&
-              <SubMenu key="loading-spin" title={<span>转转转</span>}>
-                <Menu.Item key="loading-spin-page">页面</Menu.Item>
-                <Menu.Item key="loading-spin-fragment">内部块</Menu.Item>
-              </SubMenu>
-              }
-              {selectedMenu === 'forms' &&
-              <SubMenu key="forms-validation" title={<span>校验</span>}>
-                <Menu.Item key="forms-validation-general">普通校验</Menu.Item>
-                <Menu.Item key="forms-validation-ajax">AJAX校验</Menu.Item>
-              </SubMenu>
-              }
-              {selectedMenu === 'forms' &&
-              <SubMenu key="forms-layout" title={<span>表单布局</span>}>
-                <Menu.Item key="forms-layout-labelValue">Label/Value</Menu.Item>
-              </SubMenu>
-              }
+              {subMenus}
             </Menu>
           </Sider>
 
