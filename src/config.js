@@ -4,6 +4,7 @@ const MENU_DATA = [
   {
     name: '组件',
     path: '/component',
+    key: 'component',
     subMenus: [
       {
         name: '通用',
@@ -28,6 +29,7 @@ const MENU_DATA = [
   {
     name: '常见布局',
     path: '/commonLayout',
+    key: 'commonLayout',
     subMenus: [
       {
         name: '页面',
@@ -62,6 +64,7 @@ const MENU_DATA = [
   {
     name: '数据请求',
     path: '/dataRequest',
+    key: 'dataRequest',
     subMenus: [
       {
         name: 'AJAX请求',
@@ -91,7 +94,8 @@ const MENU_DATA = [
   },
   {
     name: '预载/切换',
-    path: 'loading',
+    path: '/loading',
+    key: 'loading',
     subMenus: [
       {
         name: '转转转',
@@ -112,6 +116,7 @@ const MENU_DATA = [
   {
     name: '表单',
     path: '/forms',
+    key: 'forms',
     subMenus: [
       {
         name: '校验',
