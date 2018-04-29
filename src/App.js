@@ -1,6 +1,7 @@
 import { Breadcrumb, Layout, Menu } from 'antd';
 import 'kx-components/index.css';
 import React from 'react';
+import { MENU_DATA } from './config';
 import { actions, Route } from './framework/kx-mirrorx';
 import FormsModel from './model/FormsModel';
 import IconLabelPage from './page/component/IconLabelPage';
@@ -42,6 +43,21 @@ export default class App extends React.Component {
     const { selectedMenu, location } = this.props;
     let selectedKey = this.getSelectedKey(location);
 
+    let topMenus = [];
+    let defaultOpenKeys = [];
+
+    MENU_DATA.forEach(function (topMenu) {
+      topMenus.push(<Menu.Item key={topMenu.key}>{topMenu.name}</Menu.Item>);
+      if (topMenu.subMenus) {
+        topMenu.subMenus.forEach(function (subMenu) {
+          defaultOpenKeys.push(subMenu.key);
+        });
+      }
+    });
+
+    // 根据 selectedMenu 生成菜单
+
+
     return (
       <Layout>
         <Header className="header">
@@ -53,26 +69,15 @@ export default class App extends React.Component {
             style={{ lineHeight: '64px' }}
             onClick={this.selectMenu.bind(this)}
           >
-            <Menu.Item key="component">组件</Menu.Item>
-            <Menu.Item key="commonLayout">常见布局</Menu.Item>
-            <Menu.Item key="dataRequest">数据请求</Menu.Item>
-            <Menu.Item key="loading">预载/切换</Menu.Item>
-            <Menu.Item key="forms">表单</Menu.Item>
+            {topMenus}
           </Menu>
         </Header>
+
         <Layout>
           <Sider width={200} style={{ background: '#fff' }}>
             <Menu
               mode="inline"
-              defaultOpenKeys={[
-                'component-common',
-                'commonLayout-page',
-                'commonLayout-component',
-                'dataRequest-ajax',
-                'dataRequest-file',
-                'loading-spin',
-                'forms-validation',
-                'forms-layout']}
+              defaultOpenKeys={defaultOpenKeys}
               style={{ height: '100%', borderRight: 0 }}
               onClick={this.selectMenuItem.bind(this)}
               selectedKeys={[selectedKey]}
@@ -127,11 +132,13 @@ export default class App extends React.Component {
               }
             </Menu>
           </Sider>
+
+
           <Layout style={{ padding: '0 24px 0 24px' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
-              <Breadcrumb.Item>App</Breadcrumb.Item>
+              <Breadcrumb.Item>组件</Breadcrumb.Item>
+              <Breadcrumb.Item>通用</Breadcrumb.Item>
+              <Breadcrumb.Item>登录框</Breadcrumb.Item>
             </Breadcrumb>
             <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
               <Route exact path="/" component={IntroductionPage} />
