@@ -1,6 +1,8 @@
 import { Breadcrumb, Layout, Menu } from 'antd';
 import 'kx-components/index.css';
 import React from 'react';
+
+import './assets/css/demo.css';
 import { MENU_DATA } from './config';
 import { actions, Route } from './framework/kx-mirrorx';
 import FormsModel from './model/FormsModel';
@@ -8,6 +10,7 @@ import IconLabelPage from './page/component/IconLabelPage';
 import LoginPage from './page/component/LoginPage';
 import MoneyPage from './page/component/MoneyPage';
 import IntroductionPage from './page/IntroductionPage';
+import HeaderFooterPage from './page/layout/HeaderFooterPage';
 
 export default class App extends React.Component {
 
@@ -15,11 +18,11 @@ export default class App extends React.Component {
     super(props);
   }
 
-  selectMenu({ item, key, keyPath }) {
+  selectMenu({ item, key }) {
     actions.app.selectMenu(key);
   }
 
-  selectMenuItem({ item, key, keyPath }) {
+  selectMenuItem({ item, key }) {
     actions.routing.push(this.getSelectedPath(key));
   }
 
@@ -142,6 +145,7 @@ export default class App extends React.Component {
               <Route path="/component/common/login" component={LoginPage} />
               <Route path="/component/common/money" component={MoneyPage} />
               <Route path="/component/common/iconLabel" component={IconLabelPage} />
+              <Route path="/commonLayout/page/headerFooter" component={HeaderFooterPage} />
               <Route exact path="/forms" component={FormsModel} />
             </Content>
           </Layout>

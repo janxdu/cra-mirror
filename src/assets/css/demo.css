@@ -1,0 +1,75 @@
+.demo-title {
+  margin-top: 15px;
+}
+
+.demo-box {
+  border: 1px solid #ebedf0;
+  border-radius: 2px;
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  padding: 20px;
+}
+
+.kx-header {
+  background-color: #ffffff;
+  height: 100px;
+}
+
+.kx-logo {
+  position: absolute;
+  left: 0;
+  top: 18px;
+}
+
+.kx-clearfix {
+  display: block;
+}
+
+.kx-header-menu-main {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 13px 0;
+}
+
+.kx-header-menu-main ul li {
+  float: left;
+  margin: 6px 0;
+  list-style: none;
+  font-weight: normal;
+}
+
+.kx-header-menu-main a.current {
+  border-bottom: 2px solid #d39938;
+  text-decoration: none;
+}
+
+.kx-header-menu-main ul li a {
+  color: #454545;
+  font-size: 16px;
+  padding: 6px 0;
+  margin: 0 20px;
+  border-bottom: 2px solid #fff;
+  transition: border .1s ease-in;
+}
+
+.kx-header-menu-main .enter-my-account {
+  color: #d39938;
+  background: #f9f9f9;
+  display: inline-block;
+  line-height: 33px;
+  padding: 0 11px;
+  border: 1px solid #e6e6e6;
+  margin: -6px 20px 0 20px;
+  font-size: 14px;
+  -webkit-transition: background-color ease-in .2s;
+  -moz-transition: background-color ease-in .2s;
+  -ms-transition: background-color ease-in .2s;
+  transition: background-color ease-in .2s;
+}
+
+.kx-demo-body {
+  height: 150px;
+  line-height: 150px;
+}
