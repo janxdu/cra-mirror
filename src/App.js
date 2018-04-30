@@ -11,6 +11,7 @@ import LoginPage from './page/component/LoginPage';
 import MoneyPage from './page/component/MoneyPage';
 import IntroductionPage from './page/IntroductionPage';
 import HeaderFooterPage from './page/layout/HeaderFooterPage';
+import SidebarPage from './page/layout/SidebarPage';
 
 export default class App extends React.Component {
 
@@ -146,6 +147,7 @@ export default class App extends React.Component {
               <Route path="/component/common/money" component={MoneyPage} />
               <Route path="/component/common/iconLabel" component={IconLabelPage} />
               <Route path="/commonLayout/page/headerFooter" component={HeaderFooterPage} />
+              <Route path="/commonLayout/page/sidebar" component={SidebarPage} />
               <Route exact path="/forms" component={FormsModel} />
             </Content>
           </Layout>
