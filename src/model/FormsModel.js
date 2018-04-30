@@ -1,5 +1,6 @@
 import React from 'react';
-import { login } from '../api/userLogin';
+import { call, take } from 'redux-saga/effects';
+import { login as loginApi } from '../api/userLogin';
 import mirror, { actions, connect } from '../framework/kx-mirrorx';
 import FormsPage from '../page/FormsPage';
 
@@ -28,7 +29,7 @@ mirror.model({
   },
   effects: {
     async login(data) {
-      const response = await login(data);
+      const response = await loginApi(data);
       console.log('response=', response);
       if (response.errorCode !== 0) {
         actions.forms.setUserLoginError({ errorCode: response.errorCode, errorMsg: response.errorMsg });
@@ -36,6 +37,23 @@ mirror.model({
         actions.forms.setUserLoginSuccess({ errorCode: response.errorCode, result: response.result });
       }
     },
+
+    * loginSaga(data) {
+      const response = yield call(loginApi, data);
+      console.log('response=', response);
+      if (response.errorCode !== 0) {
+        actions.forms.setUserLoginError({ errorCode: response.errorCode, errorMsg: response.errorMsg });
+      } else {
+        actions.forms.setUserLoginSuccess({ errorCode: response.errorCode, result: response.result });
+      }
+    },
+
+    * rootSaga() {
+      while (true) {
+        yield take('forms/login');
+        console.log('hello forms/login take end from forms');
+      }
+    }
   },
 });
 
@@ -45,5 +63,6 @@ export default connect(state => {
     userLoginErrorCode: state.forms.userLoginErrorCode,
     userLoginErrorMsg: state.forms.userLoginErrorMsg,
     loginSpin: state.loading.effects.forms.login,
+    loginSagaSpin: state.loading.effects.forms.loginSaga,
   };
 })(FormsPage);

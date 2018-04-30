@@ -12,8 +12,8 @@ export default class FormsPage extends React.Component {
   render() {
     const WrappedUserLoginForm = Form.create()(UserLoginForm);
     const WrappedKxUserLoginForm = Form.create()(KxUserLoginForm);
-    const { userLoginErrorCode, userLoginErrorMsg, userInfo, loginSpin } = this.props;
-    console.log(loginSpin);
+    const { userLoginErrorCode, userLoginErrorMsg, userInfo, loginSpin, loginSagaSpin } = this.props;
+
     return (
       <div>
         <Row gutter={16}>
@@ -36,7 +36,9 @@ export default class FormsPage extends React.Component {
         </Row>
         <Row gutter={16}>
           <Col className="gutter-row" span={6}>
-            <WrappedKxUserLoginForm />
+            <Spin spinning={loginSagaSpin === true}>
+              <WrappedKxUserLoginForm />
+            </Spin>
           </Col>
         </Row>
       </div>

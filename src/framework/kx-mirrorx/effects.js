@@ -2,6 +2,8 @@ import { actions } from './actions';
 import loading from './loading';
 // Registry of namespaced effects
 import { models } from './model';
+import sagaMiddleware from './sagaMiddleware';
+import { isGenerator } from './util';
 
 let loadingModel = null;
 
@@ -20,10 +22,29 @@ export const addEffect = effects => (name, handler) => {
   let namespace = name.substring(0, idx);
   let action = name.substring(idx + 1);
 
-  loadingModel.initialState.effects[namespace] = {};
-  effects[name] = async function (props) {
-    actions.loading.show({ namespace, action });
-    await handler(props);
-    actions.loading.hide({ namespace, action });
-  };
+  if (!loadingModel.initialState.effects[namespace]) {
+    loadingModel.initialState.effects[namespace] = {};
+  }
+
+  if (isGenerator(handler)) {
+    if (action !== 'rootSaga') {
+      effects[name] = (...p) => {
+        actions.loading.show({ namespace, action });
+        let task = sagaMiddleware.run(handler, ...p);
+        task.done.then(function () {
+          actions.loading.hide({ namespace, action });
+        }).catch(function () {
+          actions.loading.hide({ namespace, action });
+        });
+      };
+    }else{
+      effects[name] = handler;
+    }
+  } else {
+    effects[name] = async function (props) {
+      actions.loading.show({ namespace, action });
+      await handler(props);
+      actions.loading.hide({ namespace, action });
+    };
+  }
 };

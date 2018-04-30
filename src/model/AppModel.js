@@ -1,7 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router';
+import { takeEvery } from 'redux-saga/effects';
 import App from '../App';
-import mirror, { actions, connect } from '../framework/kx-mirrorx';
+import mirror, { connect } from '../framework/kx-mirrorx';
 
 mirror.model({
   name: 'app',
@@ -17,9 +18,13 @@ mirror.model({
         selectedMenu: data,
       };
     },
-
-    selectMenuItem(oldState, data) {
-
+  },
+  effects: {
+    * rootSaga() {
+      yield takeEvery('forms/login', function (action) {
+        console.log('hello forms/login take end from app');
+        console.log('action=', action);
+      });
     }
   },
 });
