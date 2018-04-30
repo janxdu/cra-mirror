@@ -1,7 +1,3 @@
-.ant-layout {
-  background-color: #ffffff !important;
-}
-
 .demo-title {
   margin-top: 15px;
 }
@@ -13,6 +9,10 @@
   width: 100%;
   position: relative;
   padding: 20px;
+}
+
+.demo-box .ant-layout {
+  background-color: #ffffff !important;
 }
 
 .kx-header {
