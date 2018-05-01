@@ -1,6 +1,6 @@
 import React from 'react';
 import { call, take } from 'redux-saga/effects';
-import { login as loginApi } from '../api/userLogin';
+import { login as loginApi } from '../service/userLogin';
 import mirror, { actions, connect } from '../framework/kx-mirrorx';
 import FormsPage from '../page/FormsPage';
 

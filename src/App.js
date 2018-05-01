@@ -5,6 +5,7 @@ import React from 'react';
 import './assets/css/demo.css';
 import { MENU_DATA } from './config';
 import { actions, Route } from './framework/kx-mirrorx';
+import AjaxGetModel from './model/dataRequest/AjaxGetModel';
 import FormsModel from './model/FormsModel';
 import IconLabelPage from './page/component/IconLabelPage';
 import LoginPage from './page/component/LoginPage';
@@ -148,6 +149,7 @@ export default class App extends React.Component {
               <Route path="/component/common/iconLabel" component={IconLabelPage} />
               <Route path="/commonLayout/page/headerFooter" component={HeaderFooterPage} />
               <Route path="/commonLayout/page/sidebar" component={SidebarPage} />
+              <Route path="/dataRequest/ajax/get" component={AjaxGetModel} />
               <Route exact path="/forms" component={FormsModel} />
             </Content>
           </Layout>
