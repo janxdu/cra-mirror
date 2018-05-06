@@ -24,7 +24,7 @@ export default class AjaxGetPage extends React.Component {
               <Row>
                 <Col span={24}>
                   <Button type="primary" loading={clickMeLoading === true}
-                          onClick={actions.ajaxGet.loadContent.bind(this)}>点击我</Button>
+                          onClick={actions.ajaxGet.getHeadAccountInfo.bind(this)}>点击我</Button>
                 </Col>
               </Row>
               <Row>
@@ -35,7 +35,7 @@ export default class AjaxGetPage extends React.Component {
                       border: '1px dashed #ebedf0',
                       borderRadius: '2px',
                       height: '100px'
-                    }}>显示区域
+                    }}>{content}
                     </div>
                   </Spin>
                 </Col>

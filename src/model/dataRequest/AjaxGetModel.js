@@ -1,5 +1,6 @@
 import mirror, { actions, connect } from '../../framework/kx-mirrorx';
 import AjaxGetPage from '../../page/dataRequest/AjaxGetPage';
+import { getHeadAccountInfo as getHeadAccountInfoApi } from '../../service/dataRequest';
 
 mirror.model({
   name: 'ajaxGet',
@@ -30,9 +31,11 @@ mirror.model({
   },
 
   effects: {
-    async loadContent(data) {
+    async getHeadAccountInfo() {
       actions.ajaxGet.setClickMeLoadingStart(true);
-
+      const response = await getHeadAccountInfoApi();
+      actions.ajaxGet.setContent(JSON.stringify(response));
+      actions.ajaxGet.setClickMeLoadingEnd(false);
     }
   }
 });
@@ -41,6 +44,6 @@ export default connect(state => {
   return {
     content: state.ajaxGet.content,
     clickMeLoading: state.ajaxGet.clickMeLoading,
-    loadContentSpin: state.loading.effects.ajaxGet.loadContent,
+    loadContentSpin: state.loading.effects.ajaxGet.getHeadAccountInfo,
   };
 })(AjaxGetPage);

@@ -20,5 +20,16 @@ async function post(url, data, config) {
   }
 }
 
+async function get(url, config) {
+  let axios = createAxios();
+  try {
+    const response = await axios.get(url, config);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return createAPIError();
+  }
+}
+
 export default createAxios;
-export { post };
+export { get, post };

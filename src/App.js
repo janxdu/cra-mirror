@@ -103,7 +103,7 @@ export default class App extends React.Component {
 
     let breadcrumbItems = [];
     breadcrumbKeys.forEach(function (key) {
-      breadcrumbItems.push(<Breadcrumb.Item>{keyNameCache[key]}</Breadcrumb.Item>);
+      breadcrumbItems.push(<Breadcrumb.Item key={key}>{keyNameCache[key]}</Breadcrumb.Item>);
     });
 
     return (
