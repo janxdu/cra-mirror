@@ -1,5 +1,5 @@
 import { Breadcrumb, Layout, Menu } from 'antd';
-import 'kx-components/index.css';
+import '@kxjf/kx-components/index.css';
 import React from 'react';
 
 import './assets/css/demo.css';

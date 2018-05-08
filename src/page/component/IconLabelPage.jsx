@@ -1,5 +1,5 @@
 import { Col, Row } from 'antd';
-import { IconTip } from 'kx-components';
+import { IconTip } from '@kxjf/kx-components';
 import React from 'react';
 
 

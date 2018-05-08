@@ -1,5 +1,5 @@
 import { Col, Row } from 'antd';
-import { PasswordInput, UsernameInput } from 'kx-components';
+import { PasswordInput, UsernameInput } from '@kxjf/kx-components';
 import React from 'react';
 
 const LoginPage = () => (

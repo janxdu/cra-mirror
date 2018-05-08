@@ -1,5 +1,5 @@
 import { Button, Form } from 'antd';
-import { PasswordInput, UsernameInput } from 'kx-components';
+import { PasswordInput, UsernameInput } from '@kxjf/kx-components';
 import React from 'react';
 import { actions } from '../framework/kx-mirrorx';
 
