@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^3.4.0",
+    "antd": "^3.5.1",
     "axios": "^0.18.0",
     "classnames": "^2.2.5",
     "create-react-class": "^15.6.3",
@@ -21,7 +21,7 @@
     "redux-saga": "^0.16.0",
     "history": "^4.7.2",
     "react-redux": "^5.0.6",
-    "@kxjf/kx-components": "^0.3.0"
+    "@kxjf/kx-components": "^0.3.2"
   },
   "scripts": {
     "start": "react-app-rewired start",
