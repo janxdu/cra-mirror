@@ -1,7 +1,6 @@
 import { Col, Form, Row, Spin } from 'antd';
 import React from 'react';
-
-const FormItem = Form.Item;
+import AjaxPostForm from '../../form/AjaxPostForm';
 
 export default class AjaxPostPage extends React.Component {
   constructor(props) {
@@ -10,7 +9,7 @@ export default class AjaxPostPage extends React.Component {
 
   render() {
     const { clickMeLoading, content, loadContentSpin } = this.props;
-
+    const WrappedAjaxPostForm = Form.create()(AjaxPostForm);
     return (
       <section>
         <h1>场景</h1>
@@ -18,6 +17,9 @@ export default class AjaxPostPage extends React.Component {
           用于发出Ajax的Post请求。
         </section>
         <h2 className="demo-title">演示</h2>
+        <section className="demo-box">
+          < WrappedAjaxPostForm />
+        </section>
         <section className="demo-box">
           <Row>
             <Col span={24}>
@@ -35,5 +37,9 @@ export default class AjaxPostPage extends React.Component {
         </section>
       </section>
     );
+  }
+
+  handleSubmit() {
+
   }
 }
