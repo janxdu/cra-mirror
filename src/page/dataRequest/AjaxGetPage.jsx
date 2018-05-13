@@ -15,7 +15,7 @@ export default class AjaxGetPage extends React.Component {
       <section>
         <h1>场景</h1>
         <section>
-          用于发出Ajax的登陆请求。
+          用于发出Ajax的Get请求。
         </section>
         <h2 className="demo-title">演示</h2>
         <Row>
